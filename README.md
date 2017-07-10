@@ -31,7 +31,7 @@ sudo dpkg -i nvidia-docker*.deb
 ```
 sudo nvidia-docker run --rm nvidia/cuda nvidia-smi # Should display the same as nvidia-smi except the processes
 ```
-### Launch the docker image
+## Launch the docker image
 
 ### Build the image
 ```

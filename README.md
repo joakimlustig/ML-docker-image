@@ -27,11 +27,11 @@ nvidia-smi # Should display GPU details
 wget https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb
 sudo dpkg -i nvidia-docker*.deb
 ```
-## Verify that nvidia-docker can access GPU
+### Verify that nvidia-docker can access GPU
 ```
 sudo nvidia-docker run --rm nvidia/cuda nvidia-smi # Should display the same as nvidia-smi except the processes
 ```
-## Launch the docker image
+### Launch the docker image
 
 ### Build the image
 ```

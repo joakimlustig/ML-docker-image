@@ -35,10 +35,16 @@ sudo nvidia-docker run --rm nvidia/cuda nvidia-smi # Should display the same as 
 
 ### Build the image
 ```
-docker build -t docker build -t ml-container .
+docker build -t ml .
 ```
 ### Launch the container
 ```
 cd /path/to/project/folder # go to your project folder
-sudo nvidia-docker run -v `pwd`/:/workspace/ --rm --name tf1 -p 8888:8888 -p 6006:6006 ml:latest jupyter notebook --allow-root
+sudo nvidia-docker run -v `pwd`/:/workspace/ --rm --name ml -p 8888:8888 -p 6006:6006 ml:latest jupyter notebook --allow-root
+```
+## Misc
+
+### Launch bash in container
+```
+sudo docker exec -i -t ml /bin/bash
 ```

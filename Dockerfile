@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 
 MAINTAINER Joakim Lustig <joakim.lustig@gmail.com>
 
@@ -38,14 +38,18 @@ RUN pip --no-cache-dir install \
     python -m ipykernel.kernelspec
 
 # Install TensorFlow GPU version.
+# This is the wrong tensorflow version
 RUN pip --no-cache-dir install \
-    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.2.1-cp27-none-linux_x86_64.whl
+    https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.2.1-cp27-none-linux_x86_64.whl
 
 # Set up our notebook config.
 COPY jupyter_notebook_config.py /root/.jupyter/
 
 # Wrapper for jupyter
 COPY jupyter.sh /
+
+# For CUDA profiling, TensorFlow requires CUPTI.
+ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 
 # TensorBoard
 EXPOSE 6006

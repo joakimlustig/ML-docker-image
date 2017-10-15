@@ -34,6 +34,7 @@ RUN pip --no-cache-dir install \
         scipy \
         sklearn \
         keras \
+        xgboost \
         && \
     python -m ipykernel.kernelspec
 
